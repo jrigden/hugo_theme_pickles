@@ -3,44 +3,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   {{ with .Title | default .Site.Title }}
   <title>{{ . }}</title>
-  <meta property="og:title" content="{{ . }}" />
-  <meta name="twitter:title" content="{{ . }}" />
   {{ end }}
 
-  {{ with .Description | default .Site.Params.subtitle }}
-  <meta name="description" content="{{ . }}">
-  <meta property="og:description" content="{{ . }}">
-  <meta name="twitter:description" content="{{ . | truncate 200 }}">
-  {{ end }}
-
-  <meta name="author" content="{{ .Site.Params.author }}"/>
-  <meta property="og:site_name" content="{{ .Site.Title }}" />
+  <!-- Open Graph -->
   <meta property="og:url" content="{{ .Permalink }}" />
-
-  {{ with .Params.thumbnail }}
-  <meta property="og:image" content="{{ . | absURL }}" />
-  <meta name="twitter:image" content="{{ . | absURL }}" />
-  {{ end }}
-  <meta name="twitter:card" content="summary" />
-
-  {{ with .Site.Params.twitter }}
-  <meta name="twitter:site" content="@{{ . }}" />
-  <meta name="twitter:creator" content="@{{ . }}" />
-  {{ end }}
-
-  {{ if .IsPage }}
   <meta property="og:type" content="article" />
-  {{ with .Site.Params.facebook }}
-  <meta property="og:article:author" content="https://facebook.com/{{ . }}" />
-  {{ end }}
-  {{ else }}
-  <meta property="og:type" content="website" />
-  {{ end }}
-
-    <!-- Open Graph -->
+  <meta property="og:title" content="{{ .Title }}" />
+  <meta property="og:description" content="{{ .Summary | truncate 200 }}" />
+  <meta property="og:image" content="{{.Params.featured_image }}" />
 
   <!-- Twitter -->
 
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@mr_rigden" />
+  <meta name="twitter:title" content="{{ .Title }}" />
+  <meta name="twitter:description" content="{{ .Summary | truncate 200 }}." />
+  <meta name="twitter:image" content="{{ .Params.featured_image }}" />
+  
   <!-- Google -->
   <script type="application/ld+json">
     {
