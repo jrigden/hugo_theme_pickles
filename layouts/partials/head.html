@@ -36,8 +36,48 @@
   {{ else }}
   <meta property="og:type" content="website" />
   {{ end }}
-  <!-- Hugo Version number -->
-  {{ .Hugo.Generator -}}
+
+    <!-- Open Graph -->
+
+  <!-- Twitter -->
+
+  <!-- Google -->
+  <script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "{{ .Site.BaseURL }}"
+        },
+        "articleSection" : "{{ .Section }}",
+        "name" : "{{ .Title }}",
+        "headline" : "{{ .Title }}",
+        "description" : "{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}",
+        "inLanguage" : "en-US",
+        "author" : "Jason Rigden",
+        "creator" : "Jason Rigden",
+        "publisher": {
+          "@type": "Thing",
+          "name": "Mr. Rigden",
+          "logo": {
+            "@type": "Organization",
+            "url": "https://jasonrigden.com/android-chrome-192x192.png"
+          }
+        },
+        "accountablePerson" : "Jason Rigden",
+        "copyrightHolder" : "Jason",
+        "copyrightYear" : "{{ .Date.Format "2006" }}",
+        "datePublished": "{{ .Date }}",
+        "dateModified" : "{{ .Date }}",
+        "image": "{{if isset .Params "featured_image" }} {{ index .Params "featured_image" }} {{ end }}",
+        "url" : "{{ .Permalink }}",
+        "wordCount" : "{{ .WordCount }}",
+        "keywords" : [ {{ if isset .Params "tags" }}{{ range .Params.tags }}"{{ . }}",{{ end }}{{ end }}"Blog" ]
+    }
+    </script>
+
+
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
   <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css" />
   {{- with .Site.Params.favicon }}
