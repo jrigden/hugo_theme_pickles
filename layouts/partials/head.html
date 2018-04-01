@@ -88,4 +88,20 @@
   {{ end }}
   <script type="text/javascript" src="{{ .Site.BaseURL }}js/bundle.js"></script>
   {{ partial "head_custom.html" . }}
+
+
+
+  <style>
+    .p-author:before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    font-size: 1.4rem;
+    color: #999;
+}
+  </style>
 </head>
